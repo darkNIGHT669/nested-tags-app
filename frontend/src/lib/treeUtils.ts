@@ -7,16 +7,15 @@ function uid(): string {
 
 /** Convert a plain TagNode (from API) into a TagNodeUI with runtime _id fields */
 export function toUI(node: TagNode): TagNodeUI {
-  const base: TagNodeUI = {
+  return {
     ...node,
     _id: uid(),
     _collapsed: false,
+    // Map children recursively right here to ensure the whole object
+    // matches the TagNodeUI type immediately.
+    children: node.children ? node.children.map(child => toUI(child)) : undefined
   };
-  if (node.children) {
-    base.children = node.children.map(toUI);
-  }
-  return base;
-}
+}  
 
 /** Strip runtime UI fields (_id, _collapsed) before sending to the API */
 export function toPlain(node: TagNodeUI): TagNode {
