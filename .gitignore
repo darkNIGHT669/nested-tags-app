@@ -1,0 +1,25 @@
+# Dependency directories
+node_modules/
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Next.js build output
+.next/
+out/
+build/
+
+# Environment variables (Sensitive data)
+.env
+.env.local
+.env.development.local
+
+# Databases
+*.sqlite3
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
